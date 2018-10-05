@@ -1,0 +1,9 @@
+img {
+  height: 200px;
+  display: inline;
+  float: left;
+  margin: 1em;
+}
+#beer-data {
+  display: inline
+}

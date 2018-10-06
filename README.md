@@ -2,7 +2,9 @@
 
 ## Contributors: 
 Team LMN (team 8 @ [Telerik Academy Alpha JavaScript August 2018] (https://gitlab.com/TelerikAcademy/alpha-js-aug-18))
+
 Team leader: [Nikola] (https://gitlab.com/nizlatinov)
+
 Team members: [Lubo] (https://gitlab.com/Lubo777), [Maria] (https://gitlab.com/Marinova), [Nikola] (https://gitlab.com/nizlatinov)
 
 ## Project Description:
@@ -30,9 +32,9 @@ A single page web application serving as an online catalogue that lists detailed
  users can clear one or more filter criteria
 
  ### Single Product View: 
- clicking on a product (in landing state or after applying filters) displays a 'pop-up' with detailed information about the product that can be closed (+ optional: product can be added to favourites)
+ clicking on a product (in landing state or after applying filters) displays a 'pop-up/overlay' with detailed information about the product that can be closed (+ optional: product can be added to favourites)
 
- ### (Optional: a Favourites 'pop-up' state)
+ ### (Optional: a Favourites 'pop-up/overlay' state)
  users can add products to favourites from *single product view* and then view/delete them via a *favourites* icon
 
  ### (Optional: select more than one set of values per filter criteria)

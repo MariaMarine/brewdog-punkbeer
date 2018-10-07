@@ -5,10 +5,10 @@ Team LMN (team 8 @ [Telerik Academy Alpha JavaScript August 2018] (https://gitla
 
 Team leader: [Nikola] (https://gitlab.com/nizlatinov)
 
-Team members: [Lubo] (https://gitlab.com/Lubo777), [Maria] (https://gitlab.com/Marinova), [Nikola] (https://gitlab.com/nizlatinov)
+Team members: [Lubo] (https://my.telerikacademy.com/Users/Lubo777), [Maria] (https://my.telerikacademy.com/Users/maria.marinova), [Nikola] (https://my.telerikacademy.com/Users/nizlatinov)
 
 ## Project Description:
-A single page web application serving as an online catalogue that lists detailed informatation about all of BrewDog brewery's products
+A single page web application serving as an online catalogue that lists detailed information about all of BrewDog brewery's products
 
 ## Project Features:
  ### Landing state: 

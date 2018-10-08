@@ -1,11 +1,11 @@
 # BrewDog PunkBeer
 
 ## Contributors: 
-Team LMN (team 8 @ [Telerik Academy Alpha JavaScript August 2018] (https://gitlab.com/TelerikAcademy/alpha-js-aug-18))
+Team LMN (team 8 @ [Telerik Academy Alpha JavaScript August 2018](https://gitlab.com/TelerikAcademy/alpha-js-aug-18))
 
-Team leader: [Nikola] (https://gitlab.com/nizlatinov)
+Team leader: [Nikola](https://gitlab.com/nizlatinov)
 
-Team members: [Lubo] (https://gitlab.com/Lubo777), [Maria] (https://gitlab.com/Marinova), [Nikola] (https://gitlab.com/nizlatinov)
+Team members: [Lubo](https://gitlab.com/Lubo777), [Maria](https://gitlab.com/Marinova), [Nikola](https://gitlab.com/nizlatinov)
 
 ## Project Description:
 A single page web application serving as an online catalogue that lists detailed informatation about all of BrewDog brewery's products

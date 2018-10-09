@@ -1,0 +1,27 @@
+{
+  "name": "brewdog-punkbeer",
+  "version": "1.0.0",
+  "description": "## Contributors:  Team LMN (team 8 @ [Telerik Academy Alpha JavaScript August 2018](https://gitlab.com/TelerikAcademy/alpha-js-aug-18))",
+  "main": "index.js",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/nizlatinov/brewdog-punkbeer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/nizlatinov/brewdog-punkbeer/issues"
+  },
+  "homepage": "https://gitlab.com/nizlatinov/brewdog-punkbeer#README"
+}

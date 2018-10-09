@@ -1,19 +1,35 @@
 import * as $ from 'jquery';
 const createBeerTemplate = (data) => {
   return `
-  <div>
-    <img src='${data.image_url}' alt='${data.name}'>
+  <div class="col-sm-4"> 
+  <div class="panel panel-success">
+    <div class="panel-heading">${data.id}</div>
+    <div class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
+    <div class="panel-footer">${data.name}</div>
   </div>
-  <div id='beer-data'>
-    <p><strong>id:</strong><span id='beer-id'> ${data.id}</span></p>
-    <p><strong>name:</strong> ${data.name}</p>
-    <p><strong>tagline:</strong> ${data.tagline}</p>
-    <p><strong>first brewed:</strong> ${data.first_brewed}</p>
-    <p><strong>description:</strong> ${data.description}</p>
-    <p><strong>food pairing:</strong> ${data.food_pairing}</p>
   </div>
   `;
 };
+
+//to become a separate module
+let favourites = [];
+
+const init = function () {
+  if (!localStorage.getItem('favourites')) {
+    localStorage.setItem('favourites', JSON.stringify(favourites));
+  }
+  return JSON.parse(localStorage.getItem('favourites'));
+}
+
+const saveItem = function (itemName, value) {
+  localStorage.setItem(itemName, JSON.stringify(value));
+}
+
+const getItem = function (itemName) {
+  return JSON.parse(localStorage.getItem(itemName));
+}
+init();
+favourites = getItem('favourites');
 
 //to become a separate module
 const createSingleBeerPage = (clickedOnBeerData) => {
@@ -23,6 +39,7 @@ const createSingleBeerPage = (clickedOnBeerData) => {
     <img src='${clickedOnBeerData.image_url}' alt='${clickedOnBeerData.name}'>
   </div>
   <div id='single-beer-data'>
+    <p>id: <span id='single-beer-id'>${clickedOnBeerData.id}</span></p> 
     <p id='single-beer-name'>${clickedOnBeerData.name}</p>
     <p id='single-beer-tagline'>${clickedOnBeerData.tagline}</p>
     <p id='single-beer-description'>${clickedOnBeerData.description}</p>
@@ -38,15 +55,22 @@ const createSingleBeerPage = (clickedOnBeerData) => {
 };
 
 $(document).ready(function() {
-  $('#random-beer-button').click(function() {
+  $.get('https://api.punkapi.com/v2/beers/?per_page=24', function(data, status) {
+    for(const beer of data) {
+      $('.row').append(
+        createBeerTemplate(beer)
+        );
+    }
+  });
+  $('#random').click(function() {
     $.get('https://api.punkapi.com/v2/beers/random', function(data, status) {
-      $('#beer').html(
+      $('.row').hide();
+      $('#random-beer').html(
         createBeerTemplate(data[0])
         );
       });
     });
-  $('#beer').click(() => {
-    console.log($('#beer-id').text());
+  $('.container').click(() => {
     //random beer data, to be replaced with clicked-on beer data
     $.get('https://api.punkapi.com/v2/beers/random', function(data, status) {
       $('#beer-single-page').html(
@@ -55,6 +79,9 @@ $(document).ready(function() {
       });
     });
     $('#beer-single-page').on('click','#add-to-favs-button', function() {
-      console.log($('#single-beer-name').text());
+      const favouriteBeer = ($('#single-beer-id').text()); 
+      favourites.push({id: favouriteBeer}); //check for duplicates
+      saveItem ('favourites', favourites);
+      console.log(favourites);
     });
   });

@@ -1,4 +1,4 @@
-img {
+.img-responsive {
   height: 200px;
   display: inline;
   float: left;
@@ -6,4 +6,22 @@ img {
 }
 #beer-data {
   display: inline
+}
+
+.navbar {
+  margin-bottom: 50px;
+  border-radius: 0;
+}
+
+ .jumbotron {
+  margin-bottom: 0;
+  background-image: url("../images/logo.jpg");
+  background-size: contain; 
+  background-repeat: no-repeat; 
+  background-color: white;
+}
+
+footer {
+  background-color: #f2f2f2;
+  padding: 25px;
 }

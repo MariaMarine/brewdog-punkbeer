@@ -1,4 +1,4 @@
-
+import * as $ from 'jquery';
 const createBeerTemplate = (data) => {
   return `
   <div>
@@ -27,7 +27,7 @@ const createSingleBeerPage = (clickedOnBeerData) => {
     <p id='single-beer-tagline'>${clickedOnBeerData.tagline}</p>
     <p id='single-beer-description'>${clickedOnBeerData.description}</p>
     <p id='single-beer-food-pairing'><strong>Perfect with:</strong>${clickedOnBeerData.food_pairing}</p>
-    <ul id='brew-specifications'> 
+    <ul id='brew-specifications'>
       <li id='alcohol-percentage'><strong>ABV:</strong>${clickedOnBeerData.abv}</li>
       <li id='beer-color'><strong>EBC:</strong>${clickedOnBeerData.ebc}</li>
       <li id='beer-hoppyness'><strong>IBU:</strong>${clickedOnBeerData.ibu}</li>

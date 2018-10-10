@@ -1,22 +1,50 @@
-// import $ from 'jquery';
 global.jQuery = global.$ = require('jquery');
-
 require('bootstrap');
+require('jquery-bridget');
+require('infinite-scroll');
+import {
+  state
+} from './state.js';
+
+// Create and scroll beer list
 
 const createBeerTemplate = (data) => {
   return `
-  <div class="col-sm-4">
-  <div class="panel panel-success">
-    <div class="panel-heading">${data.id}</div>
-    <div class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
-    <div class="panel-footer">${data.name}</div>
-  </div>
-  </div>
-  `;
+        <div id=${data.id} class="col-sm-4 beerThumbnail">
+        <div class="panel panel-success">
+          <div class="panel-heading">${data.id}</div>
+          <div class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
+          <div class="panel-footer"><strong>${data.name}</strong></div>
+        </div>
+        </div>
+        `;
 };
+let $container = $('#collection-container').infiniteScroll({
+  path: function () {
+    return `https://api.punkapi.com/v2/beers?page=${state.pageNumber}&per_page=20`;
+  },
+  // load response as flat text
+  responseType: 'json',
+  status: '.scroll-status',
+  history: false,
+});
+$container.on('load.infiniteScroll', function (event, data) {
+  state.pageNumber += 1;
+  // compile data into HTML
+  const itemsHTML = data.map(createBeerTemplate).join('');
+  // convert HTML string into elements
+  const $items = $(itemsHTML);
+  // append item elements
+  $container.infiniteScroll('appendItems', $items);
+});
+//   // load initial page
+$container.infiniteScroll('loadNextPage');
+$('#collection-container').hide();
+$('#beer-single-page').hide();
 
-console.log('poop');
+
 //to become a separate module
+
 let favourites = [];
 
 const init = function () {
@@ -59,34 +87,43 @@ const createSingleBeerPage = (clickedOnBeerData) => {
   `;
 };
 
-$(document).ready(function() {
-  $.get('https://api.punkapi.com/v2/beers/?per_page=24', function(data, status) {
-    for(const beer of data) {
-      $('.row').append(
-        createBeerTemplate(beer)
-        );
-    }
+
+const displayOneBeer = (id) => {
+  $.get('https://api.punkapi.com/v2/beers/' + id, function (data) {
+    $('#beer-single-page').html(
+      createSingleBeerPage(data[0])
+    )
+  })
+};
+
+// display beer list
+$('#linkToCatalogue').on('click', () => {
+  $('.container').children().hide();
+  $('#collection-container').show();
+})
+// display one beer by id
+$('#collection-container').on('click', '.beerThumbnail', function () {
+  let beerId = this.id;
+  $('#collection-container').hide();
+  $('#beer-single-page').show();
+  displayOneBeer(beerId);
+});
+// display random beer
+$('#random').click(function () {
+  $.get('https://api.punkapi.com/v2/beers/random', function (data, status) {
+    $('#collection-container').hide();
+    $('#beer-single-page').show();
+    $('#beer-single-page').html(
+      createSingleBeerPage(data[0])
+    );
   });
-  $('#random').click(function() {
-    $.get('https://api.punkapi.com/v2/beers/random', function(data, status) {
-      $('.row').hide();
-      $('#random-beer').html(
-        createBeerTemplate(data[0])
-        );
-      });
-    });
-  $('.container').click(() => {
-    //random beer data, to be replaced with clicked-on beer data
-    $.get('https://api.punkapi.com/v2/beers/random', function(data, status) {
-      $('#beer-single-page').html(
-        createSingleBeerPage(data[0])
-        );
-      });
-    });
-    $('#beer-single-page').on('click','#add-to-favs-button', function() {
-      const favouriteBeer = ($('#single-beer-id').text());
-      favourites.push({id: favouriteBeer}); //check for duplicates
-      saveItem ('favourites', favourites);
-      console.log(favourites);
-    });
-  });
+});
+// favorites
+$('#beer-single-page').on('click', '#add-to-favs-button', function () {
+  const favouriteBeer = ($('#single-beer-id').text());
+  favourites.push({
+    id: favouriteBeer
+  }); //check for duplicates
+  saveItem('favourites', favourites);
+  console.log(favourites);
+});

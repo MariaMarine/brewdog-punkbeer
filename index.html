@@ -8,7 +8,6 @@
   <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./src/styles/style.css">
-  <script src="./dist/main.js"></script>
 </head>
 <body>
   <div class="jumbotron">
@@ -27,7 +26,7 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Beer catalogue</a></li>
+          <li id='linkToCatalogue'><a href="#">Beer catalogue</a></li>
           <li><a href="#">Filter our beers</a></li>
           <li id="random"><a href="#">Random beer</a></li>
           <li><a href="#">About</a></li>
@@ -42,12 +41,12 @@
 
 
   <div class="container">
-    <div class="row">
+    <div id='beer-single-page'>
+    </div>
+    <div class="row" id="collection-container">
     </div>
     <div id='random-beer'>
     </div>
-  </div>
-  <div id='beer-single-page'>
   </div>
   <br><br>
 
@@ -58,5 +57,7 @@
   </form>
   <p>Created by Team LMS @ Telerik Academy Alpha JavaScript August 2018</p>
 </footer>
+
+<script src="./dist/main.js"></script>
 </body>
 </html>

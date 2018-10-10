@@ -1,4 +1,6 @@
-import * as $ from 'jquery';
+// import $ from 'jquery';
+global.jQuery = global.$ = require('jquery');
+
 require('bootstrap');
 
 const createBeerTemplate = (data) => {
@@ -13,6 +15,7 @@ const createBeerTemplate = (data) => {
   `;
 };
 
+console.log('poop');
 //to become a separate module
 let favourites = [];
 

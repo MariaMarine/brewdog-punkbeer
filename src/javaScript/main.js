@@ -1,7 +1,9 @@
 import * as $ from 'jquery';
+require('bootstrap');
+
 const createBeerTemplate = (data) => {
   return `
-  <div class="col-sm-4"> 
+  <div class="col-sm-4">
   <div class="panel panel-success">
     <div class="panel-heading">${data.id}</div>
     <div class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
@@ -39,7 +41,7 @@ const createSingleBeerPage = (clickedOnBeerData) => {
     <img src='${clickedOnBeerData.image_url}' alt='${clickedOnBeerData.name}'>
   </div>
   <div id='single-beer-data'>
-    <p>id: <span id='single-beer-id'>${clickedOnBeerData.id}</span></p> 
+    <p>id: <span id='single-beer-id'>${clickedOnBeerData.id}</span></p>
     <p id='single-beer-name'>${clickedOnBeerData.name}</p>
     <p id='single-beer-tagline'>${clickedOnBeerData.tagline}</p>
     <p id='single-beer-description'>${clickedOnBeerData.description}</p>
@@ -79,7 +81,7 @@ $(document).ready(function() {
       });
     });
     $('#beer-single-page').on('click','#add-to-favs-button', function() {
-      const favouriteBeer = ($('#single-beer-id').text()); 
+      const favouriteBeer = ($('#single-beer-id').text());
       favourites.push({id: favouriteBeer}); //check for duplicates
       saveItem ('favourites', favourites);
       console.log(favourites);

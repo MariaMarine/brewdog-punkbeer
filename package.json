@@ -4,7 +4,10 @@
   "description": "## Contributors:  Team LMN (team 8 @ [Telerik Academy Alpha JavaScript August 2018](https://gitlab.com/TelerikAcademy/alpha-js-aug-18))",
   "main": "index.js",
   "dependencies": {
-    "jquery": "^3.3.1"
+    "bootstrap": "^3.3.7",
+    "infinite-scroll": "^3.0.5",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4"
   },
   "devDependencies": {
     "webpack": "^4.20.2",

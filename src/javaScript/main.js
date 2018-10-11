@@ -88,7 +88,6 @@ $('#li  nktoFavourites').on('click',  function () {
     });
   const favBeers = Array.from(favSet);
   favBeers.forEach(id => {
-    console.log (id);
     $.get('https://api.punkapi.com/v2/beers/' + id, function (data, status) {
       $('#favourites').append(
         createFavouritesTemplate(data[0])
@@ -98,4 +97,17 @@ $('#li  nktoFavourites').on('click',  function () {
   $('#favourites').empty();
   $('.container').children().hide();
   $('#favourites').show();
+});
+
+$('#favourites').on('click', "#remove-beer", function (){
+  const beerBoxToRemove = $(this).parent().parent();
+  $(beerBoxToRemove).remove();
+  const beerIDToRemove = $(beerBoxToRemove).get(0).id;
+  console.log(beerIDToRemove);
+  favourites = getItem('favourites')
+    .filter(beer => beer.id !== beerIDToRemove);
+  saveItem('favourites', favourites);
+  console.log(favourites);
+
+  
 });

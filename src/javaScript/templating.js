@@ -34,11 +34,11 @@ const createSingleBeerPage = (clickedOnBeerData) => {
 
 const createFavouritesTemplate = (data) => {
   return `
-      <div id=${data.id} class="col-sm-4 beerThumbnail">
+      <div id=${data.id} class="col-sm-4 favBeerThumbnail">
       <div class="panel panel-success">
+        <div id="remove-beer" class="panel-footer"> Remove <span id="remove-icon" class="glyphicon glyphicon-remove"></span></div>
         <div class="panel-heading"><strong>${data.name}</strong></div>
         <div class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
-        <div class="panel-footer">${data.tagline}</div>
         </div>
         </div>
         `;

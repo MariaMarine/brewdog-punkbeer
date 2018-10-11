@@ -1,7 +1,5 @@
 .img-responsive {
   height: 200px;
-  display: inline;
-  float: left;
   margin: 1em;
 }
 #home-container {
@@ -41,6 +39,7 @@ footer {
   padding: 25px;
 }
 
-#remove-icon {
+#right-icon {
   float: right;
 } 
+

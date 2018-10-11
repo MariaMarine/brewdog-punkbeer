@@ -73,6 +73,16 @@ $('#collection-container').on('click', '.beerThumbnail', function () {
   $('#beer-single-page').show();
   displayOneBeer(beerId);
 });
+// display about
+
+$('#about').on('click', function () {
+  $.get('../../README.html', function (data, status) {
+    $('#collection-container').html(data)
+    });
+    $('#beer-single-page').hide();
+    $('#collection-container').show();
+});
+
 // display random beer
 $('#random').click(function () {
   $.get('https://api.punkapi.com/v2/beers/random', function (data, status) {

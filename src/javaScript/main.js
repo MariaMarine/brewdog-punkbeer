@@ -3,13 +3,14 @@ require('bootstrap');
 require('jquery-bridget');
 require('infinite-scroll');
 import { state } from './state.js';
-import { createBeerTemplate, createFavouritesTemplate } from'./templating.js';
-import * as DOMService from './DOMService.js'
+import { createBeerTemplate } from './templating.js';
+import * as favouritesService from './favouritesService.js';
+import * as DOMService from './DOMService.js';
 
 // Create and scroll beer list
 
-let $container = $('#collection-container').infiniteScroll({
-  path: function () {
+const $container = $('#collection-container').infiniteScroll({
+  path: function() {
     return `https://api.punkapi.com/v2/beers?page=${state.pageNumber}&per_page=20`;
   },
   // load response as flat text
@@ -17,7 +18,7 @@ let $container = $('#collection-container').infiniteScroll({
   status: '.scroll-status',
   history: false,
 });
-$container.on('load.infiniteScroll', function (event, data) {
+$container.on('load.infiniteScroll', function(event, data) {
   state.pageNumber += 1;
   // compile data into HTML
   const itemsHTML = data.map(createBeerTemplate).join('');
@@ -40,17 +41,17 @@ $('#home').show();
 DOMService.displayBeerList();
 // display one beer by id
 
-DOMService.displayOneBeerById()
+DOMService.displayOneBeerById();
 // display about
 
 DOMService.displayAbout();
 // display random beer
 
 DOMService.displayRandomBeer();
-//display favourites
+// display favourites
 
 DOMService.displayFavourites();
 // favorites
 
-DOMService.addToFavourites();
-DOMService.removeFromFavourites();
+favouritesService.addToFavourites();
+favouritesService.removeFromFavourites();

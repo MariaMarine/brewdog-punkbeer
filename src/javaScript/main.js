@@ -31,28 +31,6 @@ $container.infiniteScroll('loadNextPage');
 $('.container').children().hide();
 $('#home').show();
 
-//to become a separate module
-let favourites = [];
-
-const init = function () {
-  if (!localStorage.getItem('favourites')) {
-    localStorage.setItem('favourites', JSON.stringify(favourites));
-  }
-  return JSON.parse(localStorage.getItem('favourites'));
-}
-
-const saveItem = function (itemName, value) {
-  localStorage.setItem(itemName, JSON.stringify(value));
-}
-
-const getItem = function (itemName) {
-  return JSON.parse(localStorage.getItem(itemName));
-}
-init();
-favourites = getItem('favourites');
-
-
-
 // display home
 
   DOMService.setHomeButton();
@@ -69,45 +47,10 @@ DOMService.displayAbout();
 // display random beer
 
 DOMService.displayRandomBeer();
+//display favourites
+
+DOMService.displayFavourites();
 // favorites
-$('#beer-single-page').on('click', '#add-to-favs-button', function () {
-  const favouriteBeer = ($('#single-beer-id').text());
-  favourites.push({
-    id: favouriteBeer
-  });
-  saveItem('favourites', favourites);
-  console.log(favourites);
-});
 
-$('#li  nktoFavourites').on('click',  function () {
-  const favSet = new Set();
-  favourites = getItem('favourites');
-    favourites.forEach (beer => {
-    const beerid = beer.id;
-    favSet.add(beerid);
-    });
-  const favBeers = Array.from(favSet);
-  favBeers.forEach(id => {
-    $.get('https://api.punkapi.com/v2/beers/' + id, function (data, status) {
-      $('#favourites').append(
-        createFavouritesTemplate(data[0])
-      );
-    });
-  });
-  $('#favourites').empty();
-  $('.container').children().hide();
-  $('#favourites').show();
-});
-
-$('#favourites').on('click', "#remove-beer", function (){
-  const beerBoxToRemove = $(this).parent().parent();
-  $(beerBoxToRemove).remove();
-  const beerIDToRemove = $(beerBoxToRemove).get(0).id;
-  console.log(beerIDToRemove);
-  favourites = getItem('favourites')
-    .filter(beer => beer.id !== beerIDToRemove);
-  saveItem('favourites', favourites);
-  console.log(favourites);
-
-  
-});
+DOMService.addToFavourites();
+DOMService.removeFromFavourites();

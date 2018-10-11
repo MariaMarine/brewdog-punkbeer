@@ -3,7 +3,7 @@ require('bootstrap');
 require('jquery-bridget');
 require('infinite-scroll');
 import { state } from './state.js';
-import { createBeerTemplate, createSingleBeerPage } from'./templating.js';
+import { createBeerTemplate, createSingleBeerPage, createFavouritesTemplate } from'./templating.js';
 
 // Create and scroll beer list
 
@@ -30,11 +30,7 @@ $container.infiniteScroll('loadNextPage');
 $('.container').children().hide();
 $('#home').show();
 
-
-
-
 //to become a separate module
-
 let favourites = [];
 
 const init = function () {
@@ -54,7 +50,6 @@ const getItem = function (itemName) {
 init();
 favourites = getItem('favourites');
 
-
 const displayOneBeer = (id) => {
   $.get('https://api.punkapi.com/v2/beers/' + id, function (data) {
     $('#beer-single-page').html(
@@ -63,12 +58,20 @@ const displayOneBeer = (id) => {
   })
 };
 
+<<<<<<< HEAD
 // display home
 const setHomeButton = () => {
 $('#home').on('click', showHomepage);
 };
 const showHomepage = () => {
     $('body').css({"background-image": "url(../../home.jpg)", "background-size": "cover"});
+=======
+// display about
+$('#home').on('click', function () {
+  $.get('../../home.jpg', function (data, status) {
+    $('#home-container').html(data)
+    });
+>>>>>>> 595c55e6adc3e55d9ebdb16331be2b40aeacf679
     $('.container').children().hide();
     $('#home-container').show();
   };
@@ -114,7 +117,28 @@ $('#beer-single-page').on('click', '#add-to-favs-button', function () {
   const favouriteBeer = ($('#single-beer-id').text());
   favourites.push({
     id: favouriteBeer
-  }); //check for duplicates
+  }); 
   saveItem('favourites', favourites);
   console.log(favourites);
+});
+
+$('#linktoFavourites').on('click',  function () {
+  const favSet = new Set();
+  favourites = getItem('favourites');
+    favourites.forEach (beer => {
+    const beerid = beer.id;
+    favSet.add(beerid);
+    });
+  const favBeers = Array.from(favSet);
+  favBeers.forEach(id => {
+    console.log (id);
+    $.get('https://api.punkapi.com/v2/beers/' + id, function (data, status) {
+      $('#favourites').append(
+        createFavouritesTemplate(data[0])
+      );
+    });
+  });
+  $('#favourites').empty();
+  $('.container').children().hide();
+  $('#favourites').show();
 });

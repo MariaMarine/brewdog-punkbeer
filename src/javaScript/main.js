@@ -27,8 +27,10 @@ $container.on('load.infiniteScroll', function (event, data) {
 });
 //   // load initial page
 $container.infiniteScroll('loadNextPage');
-$('#collection-container').hide();
-$('#beer-single-page').hide();
+$('.container').children().hide();
+$('#home').show();
+
+
 
 
 //to become a separate module
@@ -61,6 +63,16 @@ const displayOneBeer = (id) => {
   })
 };
 
+// display about
+
+$('#home').on('click', function () {
+  $.get('../../home.jpg', function (data, status) {
+    $('#home-container').html(data)
+    });
+    $('.container').children().hide();
+    $('#home-container').show();
+});
+
 // display beer list
 $('#linkToCatalogue').on('click', () => {
   $('.container').children().hide();
@@ -69,7 +81,7 @@ $('#linkToCatalogue').on('click', () => {
 // display one beer by id
 $('#collection-container').on('click', '.beerThumbnail', function () {
   let beerId = this.id;
-  $('#collection-container').hide();
+  $('.container').children().hide();
   $('#beer-single-page').show();
   displayOneBeer(beerId);
 });
@@ -77,16 +89,16 @@ $('#collection-container').on('click', '.beerThumbnail', function () {
 
 $('#about').on('click', function () {
   $.get('../../README.html', function (data, status) {
-    $('#collection-container').html(data)
+    $('#about-container').html(data)
     });
-    $('#beer-single-page').hide();
-    $('#collection-container').show();
+    $('.container').children().hide();
+    $('#about-container').show();
 });
 
 // display random beer
 $('#random').click(function () {
   $.get('https://api.punkapi.com/v2/beers/random', function (data, status) {
-    $('#collection-container').hide();
+    $('.container').children().hide();
     $('#beer-single-page').show();
     $('#beer-single-page').html(
       createSingleBeerPage(data[0])

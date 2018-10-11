@@ -2,23 +2,11 @@ global.jQuery = global.$ = require('jquery');
 require('bootstrap');
 require('jquery-bridget');
 require('infinite-scroll');
-import {
-  state
-} from './state.js';
+import { state } from './state.js';
+import { createBeerTemplate, createSingleBeerPage } from'./templating.js';
 
 // Create and scroll beer list
 
-const createBeerTemplate = (data) => {
-  return `
-        <div id=${data.id} class="col-sm-4 beerThumbnail">
-        <div class="panel panel-success">
-          <div class="panel-heading">${data.id}</div>
-          <div class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
-          <div class="panel-footer"><strong>${data.name}</strong></div>
-        </div>
-        </div>
-        `;
-};
 let $container = $('#collection-container').infiniteScroll({
   path: function () {
     return `https://api.punkapi.com/v2/beers?page=${state.pageNumber}&per_page=20`;
@@ -63,29 +51,6 @@ const getItem = function (itemName) {
 }
 init();
 favourites = getItem('favourites');
-
-//to become a separate module
-const createSingleBeerPage = (clickedOnBeerData) => {
-  return `
-  <div id ='single-beer-page-wrapper'>
-  <div id ='single-beer-image'>
-    <img src='${clickedOnBeerData.image_url}' alt='${clickedOnBeerData.name}'>
-  </div>
-  <div id='single-beer-data'>
-    <p>id: <span id='single-beer-id'>${clickedOnBeerData.id}</span></p>
-    <p id='single-beer-name'>${clickedOnBeerData.name}</p>
-    <p id='single-beer-tagline'>${clickedOnBeerData.tagline}</p>
-    <p id='single-beer-description'>${clickedOnBeerData.description}</p>
-    <p id='single-beer-food-pairing'><strong>Perfect with:</strong>${clickedOnBeerData.food_pairing}</p>
-    <ul id='brew-specifications'>
-      <li id='alcohol-percentage'><strong>ABV:</strong>${clickedOnBeerData.abv}</li>
-      <li id='beer-color'><strong>EBC:</strong>${clickedOnBeerData.ebc}</li>
-      <li id='beer-hoppyness'><strong>IBU:</strong>${clickedOnBeerData.ibu}</li>
-    </ul>
-    <button id='add-to-favs-button'>Add to favourites</button>
-  </div>
-  `;
-};
 
 
 const displayOneBeer = (id) => {

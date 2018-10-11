@@ -7,6 +7,17 @@
 #beer-data {
   display: inline
 }
+#single-beer-page-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#single-beer-page-wrapper > div > img{
+  height: 70vh;
+}
+#single-beer-page-wrapper > div {
+width: 40vw;
+}
 
 .navbar {
   margin-bottom: 50px;
@@ -16,8 +27,8 @@
  .jumbotron {
   margin-bottom: 0;
   background-image: url("../images/logo.jpg");
-  background-size: contain; 
-  background-repeat: no-repeat; 
+  background-size: contain;
+  background-repeat: no-repeat;
   background-color: white;
 }
 

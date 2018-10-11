@@ -67,7 +67,6 @@ const displayRandomBeer = () => {
     });
   });
 };
-
 const displayFavourites = () => {
   $('#linktoFavourites').on('click', function() {
     $('body').css({
@@ -76,20 +75,25 @@ const displayFavourites = () => {
     const favSet = new Set();
     const favourites = getItem('favourites');
       favourites.forEach((beer) => {
-      const beerid = beer.id;
-      favSet.add(beerid);
+      favSet.add(beer.id);
       });
-    const favBeers = Array.from(favSet);
-    favBeers.forEach((id) => {
+    const uniqueFavouriteBeers = Array.from(favSet);
+    if (uniqueFavouriteBeers.length === 0){
+      $('#favourites').html('<p>No favourites found!</p>');
+      $('.container').children().hide();
+      $('#favourites').show(); 
+    } else {
+    uniqueFavouriteBeers.forEach((id) => {
+      $('#favourites').empty();
       $.get('https://api.punkapi.com/v2/beers/' + id, function(data, status) {
         $('#favourites').append(
           createFavouritesTemplate(data[0])
         );
       });
     });
-    $('#favourites').empty();
     $('.container').children().hide();
-    $('#favourites').show();
+    $('#favourites').show(); 
+  }
   });
 };
 

@@ -24,17 +24,17 @@ const addToFavourites = () => {
       console.log(favourites);
     });
 };
-
 const removeFromFavourites = () => {
     $('#favourites').on('click', '#remove-beer', function() {
       const beerBoxToRemove = $(this).parent().parent();
       $(beerBoxToRemove).remove();
       const beerIDToRemove = $(beerBoxToRemove).get(0).id;
-      console.log(beerIDToRemove);
       favourites = getItem('favourites')
         .filter((beer) => beer.id !== beerIDToRemove);
+      if (favourites.length === 0){
+          $('#favourites').html('<p>No favourites found!</p>');
+      }
       saveItem('favourites', favourites);
-      console.log(favourites);
     });
 };
 

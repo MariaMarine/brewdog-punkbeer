@@ -4,6 +4,10 @@
   float: left;
   margin: 1em;
 }
+#home-container {
+  height: 100vh;
+}
+
 #beer-data {
   display: inline
 }

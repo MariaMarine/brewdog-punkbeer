@@ -63,24 +63,27 @@ const displayOneBeer = (id) => {
   })
 };
 
-// display about
-
-$('#home').on('click', function () {
-  $.get('../../home.jpg', function (data, status) {
-    $('#home-container').html(data)
-    });
+// display home
+const setHomeButton = () => {
+$('#home').on('click', showHomepage);
+};
+const showHomepage = () => {
+    $('body').css({"background-image": "url(../../home.jpg)", "background-size": "cover"});
     $('.container').children().hide();
     $('#home-container').show();
-});
-
+  };
+setHomeButton();
+showHomepage();
 // display beer list
 $('#linkToCatalogue').on('click', () => {
+  $('body').css({"background-image": "none"});
   $('.container').children().hide();
   $('#collection-container').show();
 })
 // display one beer by id
 $('#collection-container').on('click', '.beerThumbnail', function () {
   let beerId = this.id;
+  $('body').css({"background-image": "none"});
   $('.container').children().hide();
   $('#beer-single-page').show();
   displayOneBeer(beerId);
@@ -98,6 +101,7 @@ $('#about').on('click', function () {
 // display random beer
 $('#random').click(function () {
   $.get('https://api.punkapi.com/v2/beers/random', function (data, status) {
+    $('body').css({"background-image": "none"});
     $('.container').children().hide();
     $('#beer-single-page').show();
     $('#beer-single-page').html(

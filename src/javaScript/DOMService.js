@@ -21,7 +21,7 @@ const showHomepage = () => {
   $('.container').children().hide();
   $('#home-container').show();
 };
-const displayBeerList = () => {
+const setBeerCatalogueButton = () => {
   $('#linkToCatalogue').on('click', () => {
     $('body').css({
       'background-image': 'none',
@@ -30,7 +30,7 @@ const displayBeerList = () => {
     $('#collection-container').show();
   });
 };
-const displayOneBeerById = () => {
+const setTumbnailAsButton = () => {
   $('#collection-container').on('click', '.beerThumbnail', function() {
     const beerId = this.id;
     $('body').css({
@@ -41,7 +41,7 @@ const displayOneBeerById = () => {
     displayOneBeer(beerId);
   });
 };
-const displayAbout = () => {
+const setAboutButton = () => {
   $('#about').on('click', function() {
     $('body').css({
       'background-image': 'none',
@@ -53,8 +53,8 @@ const displayAbout = () => {
     $('#about-container').show();
   });
 };
-const displayRandomBeer = () => {
-  $('#random').click(function() {
+const setRandomBeerButton = () => {
+  $('#random').on('click', function() {
     $.get('https://api.punkapi.com/v2/beers/random', function(data, status) {
       $('body').css({
         'background-image': 'none',
@@ -67,7 +67,18 @@ const displayRandomBeer = () => {
     });
   });
 };
-const displayFavourites = () => {
+
+const initiateDOMElements = () => {
+  setHomeButton();
+  showHomepage();
+  setBeerCatalogueButton();
+  setTumbnailAsButton();
+  setAboutButton();
+  setRandomBeerButton();
+  setFavouritesButton();
+  displayFilterButton();
+};
+const setFavouritesButton = () => {
   $('#linktoFavourites').on('click', function() {
     $('body').css({
       'background-image': 'none',
@@ -81,7 +92,7 @@ const displayFavourites = () => {
     if (uniqueFavouriteBeers.length === 0){
       $('#favourites').html('<p>No favourites found!</p>');
       $('.container').children().hide();
-      $('#favourites').show(); 
+      $('#favourites').show();
     } else {
     uniqueFavouriteBeers.forEach((id) => {
       $('#favourites').empty();
@@ -92,11 +103,11 @@ const displayFavourites = () => {
       });
     });
     $('.container').children().hide();
-    $('#favourites').show(); 
+    $('#favourites').show();
   }
   });
 };
-
+// name to be changed to setFilterButton
 const displayFilterButton = function(){
   $('#filterBeersButton').click(function(){
     $('.container').children().hide();
@@ -104,19 +115,22 @@ const displayFilterButton = function(){
       'background-image': 'none',
     });
     $('#filterContainer').show();
-    
+
   });
 }
 
+
+
 export {
+  initiateDOMElements,
   displayOneBeer,
   setHomeButton,
   showHomepage,
-  displayBeerList,
-  displayOneBeerById,
-  displayAbout,
-  displayRandomBeer,
-  displayFavourites,
+  setBeerCatalogueButton,
+  setTumbnailAsButton,
+  setAboutButton,
+  setRandomBeerButton,
+  setFavouritesButton,
   displayFilterButton
 };
 

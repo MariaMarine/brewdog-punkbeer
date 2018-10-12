@@ -3,9 +3,9 @@ const state = {
   pageNumber: 1,
   favorites: [],
   name: '',
-  alcoholPercent: 7,
-  colourIntensity: 20,
-  hoppyness: 20,
+  alcoholPercent: 'all',
+  colourIntensity: 'all',
+  hoppyness: 'all',
 };
 
 export { state };

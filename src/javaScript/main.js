@@ -6,6 +6,7 @@ import { state } from './state.js';
 import { createBeerTemplate } from './templating.js';
 import * as favouritesService from './favouritesService.js';
 import * as DOMService from './DOMService.js';
+import { updateSearchState } from './searchAndFilter';
 
 // Create and scroll beer list
 
@@ -45,3 +46,5 @@ DOMService.displayFilterButton();
 
 favouritesService.addToFavourites();
 favouritesService.removeFromFavourites();
+
+updateSearchState();

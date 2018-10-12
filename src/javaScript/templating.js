@@ -3,7 +3,13 @@ const createBeerTemplate = (data) => {
         <div id=${data.id} class="col-sm-4 beerThumbnail">
         <div class="panel panel-default">
           <div class="panel-heading"><strong>${data.name}</strong></div>
-          <div class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
+          <div class="panel-body">
+            <div class="col-sm-6"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
+            <div class="btn-group-vertical col-sm-6" role="group" id="object-position-1">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-flash left-icon"></span> ABV: ${data.abv}%</button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-tint left-icon"></span> EBC: ${data.ebc}</button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-grain left-icon"></span> IBU: ${data.ibu}</button></div>
+            </div>
           <div class="panel-footer">${data.tagline} <span id="right-icon" class="glyphicon glyphicon-chevron-right"></span></div>
         </div>
         </div>
@@ -38,7 +44,7 @@ const createFavouritesTemplate = (data) => {
       <div class="panel panel-default">
         <div id="remove-beer" class="panel-footer"><strong>${data.name}</strong>
           <span id="right-icon" class="glyphicon glyphicon-remove"></span></div>
-        <div class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
+        <div id ="fav-beer-body" class="panel-body"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
         </div>
         </div>
         `;

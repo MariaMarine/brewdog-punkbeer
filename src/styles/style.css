@@ -2,17 +2,14 @@
   height: 300px;
   margin: 1em;
 }
-
 .beerThumbnail:hover .panel {
   transform: scale(1.02);
   transition: all ease-in-out 500ms;
   box-shadow: 3px 3px 4px darkgray; 
 }
-
 .container {
   min-height: 100vh;
 }
-
 #beer-data {
   display: inline
 }
@@ -27,12 +24,10 @@
 #single-beer-page-wrapper > div {
   width: 33vw;
 }
-
 .navbar {
   margin-bottom: 50px;
   border-radius: 0;
 }
-
  .jumbotron {
   margin-bottom: 0;
   background-image: url("../images/logo.jpg");
@@ -40,50 +35,43 @@
   background-repeat: no-repeat;
   background-color: white;
 }
-
 footer {
   background-color: #f2f2f2;
   padding: 15px;
   color: darkgray;
 }
-
 #right-icon {
   float: right;
 } 
-
 .left-icon {
   float: left;
   padding: 2px;
 } 
-
 .btn-group-vertical {
   pointer-events: none;
 }
-
 .btn-group {
   pointer-events: none;
 }
-
 .btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none !important;
 }
-
 #single-beer-description{
  color: #888b91;
  padding-top: 20px;
 }
-
 #single-beer-food-pairing{
   color: #888b91;
   padding-bottom: 20px;
  }
-
 .beer-id {
   font-size: xx-small;
   float: right;
 }
-
 h1 {
   font-family: Impact, Charcoal, sans-serif;
+}
+.display-cursor {
+  cursor: pointer;
 }

@@ -1,4 +1,6 @@
 let favourites = [];
+import { displayEmptyFavouritesList } from './DOMService.js';
+
 const init = function() {
   if (!localStorage.getItem('favourites')) {
     localStorage.setItem('favourites', JSON.stringify(favourites));
@@ -31,7 +33,7 @@ const removeFromFavourites = () => {
       favourites = getItem('favourites')
         .filter((beer) => beer.id !== beerIDToRemove);
       if (favourites.length === 0){
-          $('#favourites').html('<p>No favourites found!</p>');
+        displayEmptyFavouritesList();
       }
       saveItem('favourites', favourites);
     });

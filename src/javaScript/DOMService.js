@@ -22,7 +22,7 @@ const showHomepage = () => {
   $('#home-container').show();
 };
 const setBeerCatalogueButton = () => {
-  $('#linkToCatalogue').on('click', () => {
+  $('body').on('click', '.link-to-catalogue', () => {
     $('body').css({
       'background-image': 'none',
     });
@@ -54,7 +54,7 @@ const setAboutButton = () => {
   });
 };
 const setRandomBeerButton = () => {
-  $('#random').on('click', function() {
+  $('body').on('click', '.random', function() {
     $.get('https://api.punkapi.com/v2/beers/random', function(data, status) {
       $('body').css({
         'background-image': 'none',
@@ -90,6 +90,13 @@ const initiateDOMElements = () => {
   displayFavouriteBeerInfo();
 };
 
+const displayEmptyFavouritesList = () => {
+  $('#favourites').html(
+    "<div class='row'><div class ='col-sm-4'><img src='src/images/empty_glass.jpg'></div><div class='col-sm-8'><h1>Your list of favourites is empty!</h1><h3><p class='link-to-catalogue display-cursor'>Browse our catalogue and find your favourite beer now.</p></h3><br><button type='button' class='btn btn-default random'>I'm feeling lucky!</button></div></div>");
+  $('.container').children().hide();
+  $('#favourites').show();
+}
+
 const setFavouritesButton = () => {
   $('#linktoFavourites').on('click', function() {
     $('body').css({
@@ -102,9 +109,7 @@ const setFavouritesButton = () => {
       });
     const uniqueFavouriteBeers = Array.from(favSet);
     if (uniqueFavouriteBeers.length === 0){
-      $('#favourites').html('<p>No favourites found!</p>');
-      $('.container').children().hide();
-      $('#favourites').show();
+      displayEmptyFavouritesList();
     } else {
     uniqueFavouriteBeers.forEach((id) => {
       $('#favourites').empty();
@@ -143,7 +148,8 @@ export {
   setAboutButton,
   setRandomBeerButton,
   setFavouritesButton,
-  displayFilterButton
+  displayFilterButton,
+  displayEmptyFavouritesList
 };
 
 

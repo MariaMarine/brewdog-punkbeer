@@ -1,7 +1,7 @@
 const createBeerTemplate = (data) => {
   return `
         <div id=${data.id} class="col-sm-4 beerThumbnail">
-        <div class="panel panel-default">
+        <div class="panel panel-default display-cursor">
           <div class="panel-heading"><strong>${data.name}</strong></div>
           <div class="panel-body">
             <div class="col-sm-6"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
@@ -45,7 +45,7 @@ const createFavouritesTemplate = (data) => {
       <div class="panel panel-default">
         <div id="remove-beer" class="panel-footer"><strong>${data.name}</strong>
           <span id="right-icon" class="glyphicon glyphicon-remove"></span></div>
-        <div id ="fav-beer-body" class="panel-body">
+        <div id ="fav-beer-body" class="panel-body display-cursor">
         <div class="col-sm-6"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
             <div class="btn-group-vertical col-sm-6" role="group" id="object-position-1">
             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-flash left-icon"></span> ABV: ${data.abv}%</button>

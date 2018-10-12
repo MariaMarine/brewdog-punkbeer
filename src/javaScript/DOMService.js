@@ -68,6 +68,16 @@ const setRandomBeerButton = () => {
   });
 };
 
+const displayFavouriteBeerInfo= () => {
+  $('#favourites').on('click', '.panel-body', function() {
+    const beerIDToShow = $($(this).parent().parent()).get(0).id;
+    console.log(beerIDToShow);
+    $('.container').children().hide();
+    $('#beer-single-page').show();
+    displayOneBeer(beerIDToShow);
+  });
+}
+
 const initiateDOMElements = () => {
   setHomeButton();
   showHomepage();
@@ -77,7 +87,9 @@ const initiateDOMElements = () => {
   setRandomBeerButton();
   setFavouritesButton();
   displayFilterButton();
+  displayFavouriteBeerInfo();
 };
+
 const setFavouritesButton = () => {
   $('#linktoFavourites').on('click', function() {
     $('body').css({

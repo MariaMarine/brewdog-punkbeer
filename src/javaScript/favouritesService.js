@@ -21,13 +21,12 @@ const addToFavourites = () => {
         id: favouriteBeer,
       });
       saveItem('favourites', favourites);
-      console.log(favourites);
     });
 };
 const removeFromFavourites = () => {
     $('#favourites').on('click', '#remove-beer', function() {
       const beerBoxToRemove = $(this).parent().parent();
-      $(beerBoxToRemove).remove();
+      $(beerBoxToRemove).fadeOut();;
       const beerIDToRemove = $(beerBoxToRemove).get(0).id;
       favourites = getItem('favourites')
         .filter((beer) => beer.id !== beerIDToRemove);
@@ -37,6 +36,14 @@ const removeFromFavourites = () => {
       saveItem('favourites', favourites);
     });
 };
+
+//toDO
+const displayFavouriteBeerInfo= () => {
+  $('#favourites').on('click', '#fav-beer-body', function() {
+    const beerIDToShow = $($(this).parent().parent()).get(0).id;
+    console.log('click');
+});
+}
 
 export {
     addToFavourites,

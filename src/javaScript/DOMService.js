@@ -97,6 +97,17 @@ const displayFavourites = () => {
   });
 };
 
+const displayFilterButton = function(){
+  $('#filterBeersButton').click(function(){
+    $('.container').children().hide();
+    $('body').css({
+      'background-image': 'none',
+    });
+    $('#filterContainer').show();
+    
+  });
+}
+
 export {
   displayOneBeer,
   setHomeButton,
@@ -106,4 +117,7 @@ export {
   displayAbout,
   displayRandomBeer,
   displayFavourites,
+  displayFilterButton
 };
+
+

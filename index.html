@@ -27,7 +27,7 @@
         <ul class="nav navbar-nav">
           <li id='home'><a href="#">Home</a></li>
           <li id='linkToCatalogue'><a href="#">Beer catalogue</a></li>
-          <li><a href="#">Filter our beers</a></li>
+          <li><a id="filterBeersButton" href="#">Filter our beers</a></li>
           <li id="random"><a href="#">Random beer</a></li>
           <li id='about'><a href="#">About</a></li>
         </ul>
@@ -40,6 +40,40 @@
   </nav>
 
   <div class="container">
+      <div id="filterContainer">
+          <span>Beer Name:</span><input type="text" name="fname" id = "beerName">
+          <br>
+          
+          <span>Alcohol %:</span>
+          <select>
+              <option value="all">All</option>
+              <option value="normal">Normal (lass than 6%)</option>
+              <option value="strong">Strong (between 6% and 10%)</option>
+              <option value="magical">Magical (more than 10%)</option>
+          </select> 
+          <br>
+          
+          <span>Color:</span>
+          <select>
+              <option value="all">All</option>
+              <option value="pale">Pale</option>
+              <option value="amberBrown">Amber/Brown</option>
+              <option value="dark">Dark</option>
+          </select> 
+          <br>
+          
+          <span>Hoppyness:</span>
+          <select>
+              <option value="all">All</option>
+              <option value="mild">Mild</option>
+              <option value="hoppy">Hoppy</option>
+              <option value="superHoppy">Super Hoppy</option>
+          </select> 
+          <br>
+          
+          <button id = "searchButton">Search</button>
+          <button>Clear Filters</button>
+      </div>
     <div id='home-container'>
     </div>
     <div id='beer-single-page'>

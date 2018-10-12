@@ -32,26 +32,16 @@ $container.infiniteScroll('loadNextPage');
 $('.container').children().hide();
 $('#home').show();
 
-// display home
 
-  DOMService.setHomeButton();
-  DOMService.showHomepage();
-// display beer list
-
+DOMService.setHomeButton();
+DOMService.showHomepage();
 DOMService.displayBeerList();
-// display one beer by id
-
 DOMService.displayOneBeerById();
-// display about
-
 DOMService.displayAbout();
-// display random beer
-
 DOMService.displayRandomBeer();
-// display favourites
-
 DOMService.displayFavourites();
-// favorites
+DOMService.displayFilterButton();
+
 
 favouritesService.addToFavourites();
 favouritesService.removeFromFavourites();

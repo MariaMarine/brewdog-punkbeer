@@ -73,5 +73,6 @@ const clearAllFilters = () => {
 
 
 
+
 export { clearAllFilters };
 export { updateSearchState };

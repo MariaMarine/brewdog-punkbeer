@@ -7,14 +7,14 @@ import * as DOMService from './DOMService.js';
 import { updateSearchState } from './searchAndFilter.js';
 import { clearAllFilters } from './searchAndFilter.js';
 
-
-DOMService.initiateDOMElements()
+DOMService.initiateDOMElements();
 $('.container').children().hide();
 $('#home').show();
-
+// Create and scroll beer list
 
 favouritesService.addToFavourites();
-favouritesService.removeFromFavourites();
+favouritesService.removeFromFavouritesPage();
+favouritesService.removeFavouriteFromSinglePageView();
 
 updateSearchState();
 clearAllFilters();

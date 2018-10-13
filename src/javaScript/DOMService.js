@@ -127,14 +127,15 @@ const setFavouritesButton = () => {
 // name to be changed to setFilterButton
 const displayFilterButton = function(){
   $('#filterBeersButton').click(function(){
-    $('.container').children().hide();
+    
     $('body').css({
       'background-image': 'none',
     });
+    $('.container').children().hide();
+    $('#collection-container').show();
     $('#filterContainer').show();
-
   });
-}
+};
 
 
 

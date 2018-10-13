@@ -52,16 +52,26 @@ const updateSearchState = () => {
         state.alcoholPercent = $('#alcoholSelect').val();
         state.colourIntensity = $('#colorSelect').val();
         state.hoppyness =  $('#hoppynessSelect').val();
-        
+        console.log(createRequestUrl(state));
         })
 };
 
 
 
+const clearAllFilters = () => {
+    let urlForAllBeers = `https://api.punkapi.com/v2/beers?`;
+
+    $('#clearButton').on('click', function(){
+        state.name = $('#beerName').val('');
+        state.alcoholPercent = $('#alcoholSelect').val('all');
+        state.colourIntensity = $('#colorSelect').val('all');
+        state.hoppyness =  $('#hoppynessSelect').val('all');
+        console.log(urlForAllBeers);
+    })
+}
 
 
 
 
-
-
+export { clearAllFilters };
 export { updateSearchState };

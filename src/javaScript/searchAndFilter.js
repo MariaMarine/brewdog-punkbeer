@@ -41,6 +41,7 @@ const createRequestUrl = (state) => {
                 } 
             }
     
+        
 
 return requestUrl;
 };
@@ -51,8 +52,13 @@ const updateSearchState = () => {
         state.alcoholPercent = $('#alcoholSelect').val();
         state.colourIntensity = $('#colorSelect').val();
         state.hoppyness =  $('#hoppynessSelect').val();
+        
         })
-}
+};
+
+
+
+
 
 
 

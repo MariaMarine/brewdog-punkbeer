@@ -76,12 +76,13 @@ h1 {
   cursor: pointer;
 }
 
-
 #filterContainer{
-  background-color: #101010;
   color:  #9d9d9d;
+  padding: 12px 15px;
+
+  margin-bottom: 0.5em;
 }
 
-#filterContainer > *{
-  margin: 0.3em;
+.glyphicon-search:hover{
+  color: white;
 }

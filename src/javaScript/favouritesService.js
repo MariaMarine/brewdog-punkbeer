@@ -1,4 +1,6 @@
 let favourites = [];
+import { displayEmptyFavouritesList } from './DOMService.js';
+
 const init = function() {
   if (!localStorage.getItem('favourites')) {
     localStorage.setItem('favourites', JSON.stringify(favourites));
@@ -24,26 +26,18 @@ const addToFavourites = () => {
     });
 };
 const removeFromFavourites = () => {
-    $('#favourites').on('click', '#remove-beer', function() {
-      const beerBoxToRemove = $(this).parent().parent();
+    $('#favourites').on('click', '#right-icon', function() {
+      const beerBoxToRemove = $(this).parent().parent().parent();
       $(beerBoxToRemove).fadeOut();;
       const beerIDToRemove = $(beerBoxToRemove).get(0).id;
       favourites = getItem('favourites')
         .filter((beer) => beer.id !== beerIDToRemove);
       if (favourites.length === 0){
-          $('#favourites').html('<p>No favourites found!</p>');
+        displayEmptyFavouritesList();
       }
       saveItem('favourites', favourites);
     });
 };
-
-//toDO
-const displayFavouriteBeerInfo= () => {
-  $('#favourites').on('click', '#fav-beer-body', function() {
-    const beerIDToShow = $($(this).parent().parent()).get(0).id;
-    console.log('click');
-});
-}
 
 export {
     addToFavourites,

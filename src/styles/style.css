@@ -5,7 +5,7 @@
 .beerThumbnail:hover .panel {
   transform: scale(1.02);
   transition: all ease-in-out 500ms;
-  box-shadow: 3px 3px 4px darkgray; 
+  box-shadow: 3px 3px 4px darkgray;
 }
 .container {
   min-height: 100vh;
@@ -42,11 +42,11 @@ footer {
 }
 #right-icon {
   float: right;
-} 
+}
 .left-icon {
   float: left;
   padding: 2px;
-} 
+}
 .btn-group-vertical {
   pointer-events: none;
 }

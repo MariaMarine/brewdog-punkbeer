@@ -7,7 +7,8 @@ const displayOneBeer = (id) => {
   $.get('https://api.punkapi.com/v2/beers/' + id, function(data) {
     $('#beer-single-page').html(
       createSingleBeerPage(data[0])
-    );
+      );
+      $('#beer-single-page').show();
   });
 };
 const setHomeButton = () => {
@@ -15,7 +16,7 @@ const setHomeButton = () => {
 };
 const showHomepage = () => {
   $('body').css({
-    'background-image': 'url(../../home.jpg)',
+    'background-image': 'url(src/images/home.jpg)',
     'background-size': 'cover',
   });
   $('.container').children().hide();
@@ -37,7 +38,6 @@ const setTumbnailAsButton = () => {
       'background-image': 'none',
     });
     $('.container').children().hide();
-    $('#beer-single-page').show();
     displayOneBeer(beerId);
   });
 };

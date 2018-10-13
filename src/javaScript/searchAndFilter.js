@@ -1,5 +1,6 @@
 import { state } from './state.js';
 import * as $ from 'jquery';
+import { initializeBeerList } from './infiniteScrollService.js';
 
 const createRequestUrl = (state) => {
     let requestUrl = `https://api.punkapi.com/v2/beers?`;
@@ -42,7 +43,7 @@ const createRequestUrl = (state) => {
             }
     
         
-
+requestUrl += `&page=${state.pageNumber}`;
 return requestUrl;
 };
 

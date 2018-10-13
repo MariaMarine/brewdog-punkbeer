@@ -2,7 +2,7 @@ const createBeerTemplate = (data) => {
   return `
         <div id=${data.id} class="col-sm-4 beerThumbnail">
         <div class="panel panel-default display-cursor">
-          <div class="panel-heading"><strong>${data.name}</strong></div>
+          <div class="panel-heading"><p><strong>${data.name}</strong></p></div>
           <div class="panel-body">
             <div class="col-sm-6"><img src="${data.image_url}" class="img-responsive"  alt="${data.name}"></div>
             <div class="btn-group-vertical col-sm-6" role="group" id="object-position-1">

@@ -12,7 +12,7 @@ const displayOneBeer = (id) => {
   });
 };
 const setHomeButton = () => {
-  $('#home').on('click', showHomepage);
+  $('.home').on('click', showHomepage);
 };
 const showHomepage = () => {
   $('body').css({

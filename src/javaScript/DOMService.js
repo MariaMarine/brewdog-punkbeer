@@ -2,7 +2,19 @@ import {
   createSingleBeerPage, createFavouritesTemplate,
 } from './templating.js';
 import { getItem } from './favouritesService.js';
+import { initializeBeerList } from './infiniteScrollService.js'
 
+let $container;
+const setBeerCatalogueButton = () => {
+  $('body').on('click', '.link-to-catalogue', () => {
+    initializeBeerList($container)
+    $('body').css({
+      'background-image': 'none',
+    });
+    $('.container').children().hide();
+    $('#collection-container').show();
+  });
+};
 const displayOneBeer = (id) => {
   $.get('https://api.punkapi.com/v2/beers/' + id, function(data) {
     $('#beer-single-page').html(
@@ -21,15 +33,6 @@ const showHomepage = () => {
   });
   $('.container').children().hide();
   $('#home-container').show();
-};
-const setBeerCatalogueButton = () => {
-  $('body').on('click', '.link-to-catalogue', () => {
-    $('body').css({
-      'background-image': 'none',
-    });
-    $('.container').children().hide();
-    $('#collection-container').show();
-  });
 };
 const setTumbnailAsButton = () => {
   $('#collection-container').on('click', '.beerThumbnail', function() {
@@ -67,7 +70,6 @@ const setRandomBeerButton = () => {
     });
   });
 };
-
 const displayFavouriteBeerInfo= () => {
   $('#favourites').on('click', '.panel-body', function() {
     const beerIDToShow = $($(this).parent().parent()).get(0).id;
@@ -77,7 +79,6 @@ const displayFavouriteBeerInfo= () => {
     displayOneBeer(beerIDToShow);
   });
 }
-
 const initiateDOMElements = () => {
   setHomeButton();
   showHomepage();
@@ -89,14 +90,12 @@ const initiateDOMElements = () => {
   displayFilterButton();
   displayFavouriteBeerInfo();
 };
-
 const displayEmptyFavouritesList = () => {
   $('#favourites').html(
     "<div class='row'><div class ='col-sm-4'><img src='src/images/empty_glass.jpg'></div><div class='col-sm-8'><h1>Your list of favourites is empty!</h1><h3><p class='link-to-catalogue display-cursor'>Browse our catalogue and find your favourite beer now.</p></h3><br><button type='button' class='btn btn-default random'>I'm feeling lucky!</button></div></div>");
   $('.container').children().hide();
   $('#favourites').show();
 }
-
 const setFavouritesButton = () => {
   $('#linktoFavourites').on('click', function() {
     $('body').css({
@@ -127,7 +126,7 @@ const setFavouritesButton = () => {
 // name to be changed to setFilterButton
 const displayFilterButton = function(){
   $('#filterBeersButton').click(function(){
-    
+
     $('body').css({
       'background-image': 'none',
     });
@@ -136,20 +135,17 @@ const displayFilterButton = function(){
     $('#filterContainer').show();
   });
 };
-
-
-
 export {
   initiateDOMElements,
-  displayOneBeer,
-  setHomeButton,
-  showHomepage,
-  setBeerCatalogueButton,
-  setTumbnailAsButton,
-  setAboutButton,
-  setRandomBeerButton,
-  setFavouritesButton,
-  displayFilterButton,
+  // displayOneBeer,
+  // setHomeButton,
+  // showHomepage,
+  // setBeerCatalogueButton,
+  // setTumbnailAsButton,
+  // setAboutButton,
+  // setRandomBeerButton,
+  // setFavouritesButton,
+  // displayFilterButton,
   displayEmptyFavouritesList
 };
 

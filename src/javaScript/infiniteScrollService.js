@@ -5,7 +5,7 @@ const initializeBeerList = (callback) => {
   state.pageNumber = 1;
 
   const buildInitialRequest = () => {
-    return `https://api.punkapi.com/v2/beers?page=${state.pageNumber}&per_page=2`;
+    return `https://api.punkapi.com/v2/beers?page=${state.pageNumber}&per_page=20`;
   };
 
   const buildRequestURL = callback || buildInitialRequest;

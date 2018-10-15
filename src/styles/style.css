@@ -7,12 +7,27 @@
   transition: all ease-in-out 500ms;
   box-shadow: 3px 3px 4px darkgray;
 }
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: 	#F5F5F5; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background:#a1a7af
+}
 .panel-heading {
   overflow: scroll;
+  overflow-x: hidden;
   height: 3em;
+  
 }
 .panel-footer {
   overflow: scroll;
+  overflow-x: hidden;
   height: 3em;
 }
 
@@ -51,6 +66,7 @@ footer {
 }
 #right-icon {
   float: right;
+  cursor: pointer;
 }
 .left-icon {
   float: left;
@@ -84,15 +100,14 @@ h1 {
 .display-cursor {
   cursor: pointer;
 }
-
 #filterContainer{
   color:  #9d9d9d;
-  padding: 12px 15px;
-
+  visibility:hidden; 
+  padding: 12px 15px 0px 15px;
   margin-bottom: 0.5em;
+  
 }
-
-.glyphicon-search:hover{
+.glyphicon-search:hover, #clearButton:hover{
   color: white;
 }
 

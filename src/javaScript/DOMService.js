@@ -1,8 +1,13 @@
-import {
-  createSingleBeerPage, createFavouritesTemplate,
-} from './templating.js';
+import { createSingleBeerPage, createFavouritesTemplate, } from './templating.js';
 import { initializeBeerList } from './infiniteScrollService.js'
-import { getItem, isInFavouritesList, addToFavourites, removeFromFavouritesPage, removeFavouriteFromSinglePageView } from './favouritesService.js';
+import { 
+  getItem,
+  isInFavouritesList,
+  addToFavourites,
+  removeFromFavouritesPage,
+  removeFavouriteFromSinglePageView
+    } from './favouritesService.js';
+import { setClearFiltersButton, setSearchButton } from './searchAndFilter.js';
 
 let $container;
 const setBeerCatalogueButton = () => {
@@ -134,6 +139,8 @@ const displayFavourites = (beers) => {
       displayFavouriteBeerInfo();
       removeFavouriteFromSinglePageView();
       removeFromFavouritesPage();
+      setClearFiltersButton();
+      setSearchButton();
     };
     export {
       initiateDOMElements,

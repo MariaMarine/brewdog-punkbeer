@@ -1,5 +1,5 @@
-let favourites = [];
 import { displayEmptyFavouritesList } from './DOMService.js';
+let favourites = [];
 
 const init = function() {
   if (!localStorage.getItem('favourites')) {

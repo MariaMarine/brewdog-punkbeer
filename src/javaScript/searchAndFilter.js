@@ -11,8 +11,8 @@ $('.navbar').on('click','#search', function () {
         $('body').on('keypress', function(event) {
            if(event.originalEvent.key === 'Enter') {
                 updateSearchState();
-                displayFilteredBeers();             
-           }           
+                displayFilteredBeers();
+           }
         });
  });
 
@@ -65,7 +65,7 @@ const createRequestUrl = () => {
         }
     }
     requestUrl += `&page=${state.pageNumber}`;
-    
+
     return requestUrl;
 };
 
@@ -85,7 +85,6 @@ const setSearchButton = () => {
 };
 const displayFilteredBeers = () => {
     // create page of beers
-    $('#collection-container').empty();
     initializeBeerList(createRequestUrl);
     // show the page of beers
     $('body').css({
@@ -97,8 +96,6 @@ const displayFilteredBeers = () => {
 
 
 const setClearFiltersButton = () => {
-    let urlForAllBeers = `https://api.punkapi.com/v2/beers?`;
-
     $('#clearButton').on('click', function () {
         // clear state
         state.name = $('#beerName').val('');
@@ -107,10 +104,6 @@ const setClearFiltersButton = () => {
         state.hoppyness = $('#hoppynessSelect').val('all');
     })
 }
-
-
-
-
 export {
     setClearFiltersButton,
     setSearchButton,

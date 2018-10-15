@@ -89,66 +89,53 @@ const displayFavouriteBeerInfo= () => {
   });
 };
 
-const initiateDOMElements = () => {
-  setHomeButton();
-  showHomepage();
-  setBeerCatalogueButton();
-  setTumbnailAsButton();
-  setAboutButton();
-  setRandomBeerButton();
-  setFavouritesButton();
-  displayFilterButton();
-  addToFavourites();
-  displayFavouriteBeerInfo();
-  removeFavouriteFromSinglePageView();
-  removeFromFavouritesPage();
-};
-
 const displayFavourites = (beers) => {
   $('#favourites').empty();
   beers.forEach((id) => {
     $.get('https://api.punkapi.com/v2/beers/' + id, function(data, status) {
       $('#favourites').append(
         createFavouritesTemplate(data[0])
-      );
-    });
-  });
-  $('.container').children().hide();
-  $('#favourites').show();
-};
-
-const displayEmptyFavouritesList = () => {
-  $('#favourites').html(
-    '<div class=\'row\'><div class =\'col-sm-4\'><img src=\'src/images/empty_glass.jpg\'></div><div class=\'col-sm-8\'><h1>Your list of favourites is empty!</h1><h3><p class=\'link-to-catalogue display-cursor\'>Browse our catalogue and find your favourite beer now.</p></h3><br><button type=\'button\' class=\'btn btn-default random\'>I\'m feeling lucky!</button></div></div>');
-  $('.container').children().hide();
-  $('#favourites').show();
-};
-const setFavouritesButton = () => {
-  $('#linktoFavourites').on('click', function() {
-    $('body').css({
-      'background-image': 'none',
-    });
-    const favourites = getItem('favourites').map((fav) => fav.id);
-    if (favourites.length === 0) {
-      displayEmptyFavouritesList();
-    } else {
-      displayFavourites(favourites);
-    }
-  });
-};
-// name to be changed to setFilterButton
-const displayFilterButton = function() {
-  $('#filterBeersButton').click(function() {
-
-    $('body').css({
-      'background-image': 'none',
+        );
+      });
     });
     $('.container').children().hide();
-    $('#collection-container').show();
-    $('#filterContainer').show();
-  });
-};
-export {
-  initiateDOMElements,
-  displayEmptyFavouritesList
-};
+    $('#favourites').show();
+  };
+
+  const displayEmptyFavouritesList = () => {
+    $('#favourites').html(
+      '<div class=\'row\'><div class =\'col-sm-4\'><img src=\'src/images/empty_glass.jpg\'></div><div class=\'col-sm-8\'><h1>Your list of favourites is empty!</h1><h3><p class=\'link-to-catalogue display-cursor\'>Browse our catalogue and find your favourite beer now.</p></h3><br><button type=\'button\' class=\'btn btn-default random\'>I\'m feeling lucky!</button></div></div>');
+      $('.container').children().hide();
+      $('#favourites').show();
+    };
+  const setFavouritesButton = () => {
+      $('#linktoFavourites').on('click', function() {
+        $('body').css({
+          'background-image': 'none',
+        });
+        const favourites = getItem('favourites').map((fav) => fav.id);
+        if (favourites.length === 0) {
+          displayEmptyFavouritesList();
+        } else {
+          displayFavourites(favourites);
+        }
+      });
+    };
+
+    const initiateDOMElements = () => {
+      setHomeButton();
+      showHomepage();
+      setBeerCatalogueButton();
+      setTumbnailAsButton();
+      setAboutButton();
+      setRandomBeerButton();
+      setFavouritesButton();
+      addToFavourites();
+      displayFavouriteBeerInfo();
+      removeFavouriteFromSinglePageView();
+      removeFromFavouritesPage();
+    };
+    export {
+      initiateDOMElements,
+      displayEmptyFavouritesList
+    };

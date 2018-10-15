@@ -7,14 +7,23 @@ $('.navbar').on('click','#search', function () {
     $('#search')
         .html("<i class='glyphicon glyphicon-remove-circle'></i>")
         .attr("id", "close-search");
+
+        $('body').on('keypress', function(event) {
+           if(event.originalEvent.key === 'Enter') {
+                updateSearchState();
+                displayFilteredBeers();             
+           }           
+        });
  });
- 
- $('.navbar').on('click','#close-search', function () {
+
+$('.navbar').on('click','#close-search', function () {
     $('#filterContainer').css({'visibility':'hidden'});
     $('#close-search')
         .html("Search")
         .attr("id", "search");
-        clearAllFilters();
+        setClearFiltersButton();
+
+        $('body').off('keypress');
  });
 
 const createRequestUrl = () => {
@@ -56,7 +65,7 @@ const createRequestUrl = () => {
         }
     }
     requestUrl += `&page=${state.pageNumber}`;
-    console.log(requestUrl);
+    
     return requestUrl;
 };
 
@@ -96,9 +105,12 @@ const setClearFiltersButton = () => {
         state.alcoholPercent = $('#alcoholSelect').val('all');
         state.colourIntensity = $('#colorSelect').val('all');
         state.hoppyness = $('#hoppynessSelect').val('all');
-        console.log(urlForAllBeers);
     })
 }
+
+
+
+
 export {
     setClearFiltersButton,
     setSearchButton,

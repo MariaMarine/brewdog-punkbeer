@@ -41,9 +41,8 @@ A single page web application serving as an online catalogue that lists detailed
  Displays a single product view of a random beer
  
  ### Favorites page
- 
- Displays favorites // to be edited by M
- users can add products to favourites from *single product view* and then view/delete them via a *favourites* icon
+ Displays all added favorites 
+ Users can add products to favourites from *single product view* or *random beer page* and then view/delete them via a *favourites* icon
 
  ### Filter by criteria:
  - alcohol by volume (a set of predefined ranges of value, i.e: normal (ABV <= 6), strong (ABV 6.1-10), magical (ABV >= 10.1));

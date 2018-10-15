@@ -2,6 +2,21 @@ import { state } from './state.js';
 import * as $ from 'jquery';
 import { initializeBeerList } from './infiniteScrollService.js';
 
+$('.navbar').on('click','#search', function () {
+    $('#filterContainer').css({'visibility':'visible'});
+    $('#search')
+        .html("<i class='glyphicon glyphicon-remove-circle'></i>")
+        .attr("id", "close-search");
+ });
+ 
+ $('.navbar').on('click','#close-search', function () {
+    $('#filterContainer').css({'visibility':'hidden'});
+    $('#close-search')
+        .html("Search")
+        .attr("id", "search");
+        clearAllFilters();
+ });
+
 const createRequestUrl = (state) => {
     let requestUrl = `https://api.punkapi.com/v2/beers?`;
 

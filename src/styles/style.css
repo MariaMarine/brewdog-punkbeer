@@ -95,3 +95,33 @@ h1 {
 .glyphicon-search:hover{
   color: white;
 }
+
+#filterContainer{
+  color:  #9d9d9d;
+  visibility:hidden;
+  padding: 12px 15px 0px 15px;
+  margin-bottom: 0.5em;
+ 
+ }
+ .glyphicon-search:hover, #clearButton:hover{
+  color: white;
+ }
+ #beerName {
+  border-radius: 5px;
+  padding-left: 5px;
+  width: 7em;
+ }
+ #beerName:focus, #beerName:active {
+  outline: none;
+ }
+ .dropdown {
+  border-radius: 5px;
+  padding-left: 1px;
+  height: 1.9em;
+ }
+ .dropdown:focus, .dropdown:active {
+  outline: none;
+ }
+ .navbar-label {
+  margin-left: 5px
+ }

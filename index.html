@@ -23,7 +23,6 @@
         </button>
 
       </div>
-      <!-- changed linkToCatalogue and random from #id to class to reuse functions-->
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="home"><a href="#">Home</a></li>
@@ -33,35 +32,34 @@
           <li id="about"><a href="#">About</a></li>
         </ul>
 
-
         <ul class="nav navbar-nav navbar-right">
-          <li> <a id="filterContainer">
-            <span></span><input type="text" name="fname" placeholder="Beer name" id = "beerName">
-            <span>Alcohol %:</span>
-            <select id="alcoholSelect">
+          <li><a id="filterContainer">
+            <input type="text" name="fname" placeholder="Beer name" id="beerName">
+            <span class="navbar-label">ABV:</span>
+            <select id="alcoholSelect" class="dropdown">
                 <option value="all">All</option>
-                <option value="normal">6%)</option>
-                <option value="strong">6% - 10%)</option>
-                <option value="magical">>10%)</option>
+                <option value="normal"> 0-6% </option>
+                <option value="strong">6-10%</option>
+                <option value="magical">10%+</option>
             </select>
-            <span>Colour:</span>
-            <select id="colorSelect">
+            <span class="navbar-label">Colour:</span>
+            <select id="colorSelect" class="dropdown">
                 <option value="all">All</option>
                 <option value="pale">Pale</option>
-                <option value="amberBrown">Brown</option>
+                <option value="amberBrown">Amber</option>
                 <option value="dark">Dark</option>
             </select>
-            <span>Hoppyness:</span>
-            <select id="hoppynessSelect">
+            <span class="navbar-label">Hops:</span>
+            <select id="hoppynessSelect" class="dropdown">
                 <option value="all">All</option>
                 <option value="mild">Mild</option>
                 <option value="hoppy">Hoppy</option>
-                <option value="superHoppy">Super Hoppy</option>
+                <option value="superHoppy">Extra</option>
             </select>
-            <span id = "searchButton"><span class="glyphicon glyphicon-search"></span></span>
-            <span id = "clearButton">Clear Filters</span>
+            <span id="searchButton" class="glyphicon glyphicon-search navbar-label"></span>
+            <span id="clearButton" class="glyphicon glyphicon-trash navbar-label"></span>
         </a></li>
-          <li><a href="#">Show/Clear filter</a></li>
+          <li><a href="#" id="search">Search</a></li>
           <li id="linktoFavourites"><a href="#"><span class="glyphicon glyphicon-heart"></span></a></li>
         </ul>
       </div>
@@ -69,8 +67,7 @@
 </nav>
 
   <div class="container">
-
-    <div id="home-container">
+    <div id='home-container'>
     </div>
     <div id="beer-single-page">
     </div>

@@ -16,9 +16,6 @@ $('#home').show();
 favouritesService.addToFavourites();
 favouritesService.removeFromFavouritesPage();
 favouritesService.removeFavouriteFromSinglePageView();
-// nz za6to sa callnati. moje bi e test;
-// updateSearchState();
-// clearAllFilters();
 
 setClearFiltersButton();
 setSearchButton();

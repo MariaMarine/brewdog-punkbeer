@@ -2,7 +2,7 @@ import {
   createSingleBeerPage, createFavouritesTemplate,
 } from './templating.js';
 import { initializeBeerList } from './infiniteScrollService.js'
-import { getItem, isInFavouritesList } from './favouritesService.js';
+import { getItem, isInFavouritesList, addToFavourites, removeFromFavouritesPage, removeFavouriteFromSinglePageView } from './favouritesService.js';
 
 let $container;
 const setBeerCatalogueButton = () => {
@@ -98,7 +98,10 @@ const initiateDOMElements = () => {
   setRandomBeerButton();
   setFavouritesButton();
   displayFilterButton();
+  addToFavourites();
   displayFavouriteBeerInfo();
+  removeFavouriteFromSinglePageView();
+  removeFromFavouritesPage();
 };
 
 const displayFavourites = (beers) => {
@@ -147,14 +150,5 @@ const displayFilterButton = function() {
 };
 export {
   initiateDOMElements,
-  // displayOneBeer,
-  // setHomeButton,
-  // showHomepage,
-  // setBeerCatalogueButton,
-  // setTumbnailAsButton,
-  // setAboutButton,
-  // setRandomBeerButton,
-  // setFavouritesButton,
-  // displayFilterButton,
   displayEmptyFavouritesList
 };

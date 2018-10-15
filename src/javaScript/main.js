@@ -13,9 +13,5 @@ $('.container').children().hide();
 $('#home').show();
 
 
-favouritesService.addToFavourites();
-favouritesService.removeFromFavouritesPage();
-favouritesService.removeFavouriteFromSinglePageView();
-
 setClearFiltersButton();
 setSearchButton();

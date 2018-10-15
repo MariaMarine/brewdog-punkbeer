@@ -43,6 +43,7 @@ const removeFromFavourites = (id) => {
 
 const removeFromFavouritesPage = () => {
     $('#favourites').on('click', '#right-icon', function() {
+      event.stopPropagation();
       const beerBoxToRemove = $(this).parent().parent().parent();
       $(beerBoxToRemove).fadeOut();
       const beerIDToRemove = $(beerBoxToRemove).get(0).id;

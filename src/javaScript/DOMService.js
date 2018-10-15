@@ -1,13 +1,12 @@
 import {
   createSingleBeerPage, createFavouritesTemplate,
 } from './templating.js';
+import { getItem } from './favouritesService.js';
 import { initializeBeerList } from './infiniteScrollService.js'
-import { getItem, isInFavouritesList } from './favouritesService.js';
 
-let $container;
 const setBeerCatalogueButton = () => {
   $('body').on('click', '.link-to-catalogue', () => {
-    initializeBeerList($container)
+    initializeBeerList();
     $('body').css({
       'background-image': 'none',
     });
@@ -21,17 +20,7 @@ const displayOneBeer = (id) => {
       createSingleBeerPage(data[0])
       );
       $('#beer-single-page').show();
-      addFavouriteListButton(data);
   });
-};
-const addFavouriteListButton = (data) => {
-  if (isInFavouritesList(data)) {
-    $('#single-beer-food-pairing')
-      .after('<button id=\'remove-from-favs-button\' type=\'button\' class=\'btn btn-default\'><span class=\'glyphicon glyphicon-remove left-icon\'></span> Remove from favourites</button>');
-  } else {
-    $('#single-beer-food-pairing')
-      .after('<button id=\'add-to-favs-button\' type=\'button\' class=\'btn btn-default\'><span class=\'glyphicon glyphicon-heart left-icon\'></span> Add to favourites</button>');
-  }
 };
 const setHomeButton = () => {
   $('.home').on('click', showHomepage);
@@ -77,18 +66,18 @@ const setRandomBeerButton = () => {
       $('#beer-single-page').html(
         createSingleBeerPage(data[0])
       );
-      addFavouriteListButton(data);
     });
   });
 };
 const displayFavouriteBeerInfo= () => {
   $('#favourites').on('click', '.panel-body', function() {
     const beerIDToShow = $($(this).parent().parent()).get(0).id;
+    console.log(beerIDToShow);
     $('.container').children().hide();
+    $('#beer-single-page').show();
     displayOneBeer(beerIDToShow);
   });
-};
-
+}
 const initiateDOMElements = () => {
   setHomeButton();
   showHomepage();
@@ -100,42 +89,42 @@ const initiateDOMElements = () => {
   displayFilterButton();
   displayFavouriteBeerInfo();
 };
-
-const displayFavourites = (beers) => {
-  $('#favourites').empty();
-  beers.forEach((id) => {
-    $.get('https://api.punkapi.com/v2/beers/' + id, function(data, status) {
-      $('#favourites').append(
-        createFavouritesTemplate(data[0])
-      );
-    });
-  });
-  $('.container').children().hide();
-  $('#favourites').show();
-};
-
 const displayEmptyFavouritesList = () => {
   $('#favourites').html(
-    '<div class=\'row\'><div class =\'col-sm-4\'><img src=\'src/images/empty_glass.jpg\'></div><div class=\'col-sm-8\'><h1>Your list of favourites is empty!</h1><h3><p class=\'link-to-catalogue display-cursor\'>Browse our catalogue and find your favourite beer now.</p></h3><br><button type=\'button\' class=\'btn btn-default random\'>I\'m feeling lucky!</button></div></div>');
+    "<div class='row'><div class ='col-sm-4'><img src='src/images/empty_glass.jpg'></div><div class='col-sm-8'><h1>Your list of favourites is empty!</h1><h3><p class='link-to-catalogue display-cursor'>Browse our catalogue and find your favourite beer now.</p></h3><br><button type='button' class='btn btn-default random'>I'm feeling lucky!</button></div></div>");
   $('.container').children().hide();
   $('#favourites').show();
-};
+}
 const setFavouritesButton = () => {
   $('#linktoFavourites').on('click', function() {
     $('body').css({
       'background-image': 'none',
     });
-    const favourites = getItem('favourites').map((fav) => fav.id);
-    if (favourites.length === 0) {
+    const favSet = new Set();
+    const favourites = getItem('favourites');
+      favourites.forEach((beer) => {
+      favSet.add(beer.id);
+      });
+    const uniqueFavouriteBeers = Array.from(favSet);
+    if (uniqueFavouriteBeers.length === 0){
       displayEmptyFavouritesList();
     } else {
-      displayFavourites(favourites);
-    }
+    uniqueFavouriteBeers.forEach((id) => {
+      $('#favourites').empty();
+      $.get('https://api.punkapi.com/v2/beers/' + id, function(data, status) {
+        $('#favourites').append(
+          createFavouritesTemplate(data[0])
+        );
+      });
+    });
+    $('.container').children().hide();
+    $('#favourites').show();
+  }
   });
 };
 // name to be changed to setFilterButton
-const displayFilterButton = function() {
-  $('#filterBeersButton').click(function() {
+const displayFilterButton = function(){
+  $('#filterBeersButton').click(function(){
 
     $('body').css({
       'background-image': 'none',
@@ -158,3 +147,5 @@ export {
   // displayFilterButton,
   displayEmptyFavouritesList
 };
+
+

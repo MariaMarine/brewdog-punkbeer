@@ -1,26 +1,99 @@
-<h1 id="brewdog-punkbeer">BrewDog PunkBeer</h1>
+<h1 id="brewdogpunkbeer">BrewDog PunkBeer</h1>
+
 <h2 id="contributors">Contributors:</h2>
+
 <p>Team LMN (team 8 @ <a href="https://gitlab.com/TelerikAcademy/alpha-js-aug-18">Telerik Academy Alpha JavaScript August 2018</a>)</p>
+
 <p>Team leader: <a href="https://gitlab.com/nizlatinov">Nikola</a></p>
+
 <p>Team members: <a href="https://my.telerikacademy.com/Users/Lubo777">Lubo</a>, <a href="https://my.telerikacademy.com/Users/maria.marinova">Maria</a>, <a href="https://my.telerikacademy.com/Users/nizlatinov">Nikola</a></p>
-<h2 id="project-description">Project Description:</h2>
+
+<h2 id="projectdescription">Project Description:</h2>
+
 <p>A single page web application serving as an online catalogue that lists detailed information about all of BrewDog brewery's products</p>
-<h2 id="project-features">Project Features:</h2>
-<p>### Landing state: Showcases all beers</p>
-<p>### Filter by criteria: - alcohol by volume (a set of predefined ranges of value, i.e: normal (ABV &lt;= 6), strong (ABV 6.1-10), magical (ABV &gt;= 10.1)); - colour intensity/EBC (a set of predefined ranges of value, i.e: pale (EBC &lt;= 19), amber/brown (EBC 20-49), dark (EBC &gt;= 50)) - hoppyness/IBU (a set of predefined ranges of value, i.e: mild (IBU &lt;= 19), hoppy (IBU 20-59), super hoppy (IBU &gt;= 60)</p>
-<p>### Search by name/keyword (optional): Displays <strong>all</strong> beers matching search criteria; if filters were previously applied, those are disregarded</p>
-<p>### Filter criteria can be combined (optional): i.e: selecting 'strong' and 'pale' filters returns <strong>all</strong> matches for ABV 6.1 - 10 &amp;&amp; EBC &lt;= 19</p>
-<p>### Nº of results per state (optional): default = 25; users can change the number of matches that are displayed simultaneously</p>
-<p>### Clear filter(s): users can clear one or more filter criteria</p>
-<p>### Single Product View: clicking on a product (in landing state or after applying filters) displays an overlay with detailed information about the product that can be closed (+ optional: product can be added to favourites)</p>
-<p>### (Optional: a Favourites 'overlay' state) users can add products to favourites from <em>single product view</em> and then view/delete them via a <em>favourites</em> icon</p>
-<p>### (Optional: select more than one set of values per filter criteria) i.e: 'hoppy' &amp;&amp; 'super hoppy' returns all matches for IBU &gt;=20</p>
-<h2 id="built-with">Built with:</h2>
+
+<h2 id="projectfeatures">Project Features:</h2>
+
+<h3> Logo Bar</h3>
+<p>Display logo</p>
+<p>When clicked displays homepage view</p>
+
+<h3>Navigation Bar</h3>
+<p>Displays a number of links to views on the page: </p>
+
+<ul>
+<li><p>Home</p></li>
+
+<li><p>Beer Catalogue</p></li>
+
+<li><p>Random Beer</p></li>
+
+<li><p>About</p></li>
+
+<li><p>search (when clicked shows inputs for filters as a form within Navigation Bar)</p></li>
+
+<li><p>favorites</p></li></ul>
+
+<h3 id="homepage">Homepage</h3>
+
+<p>Displays initial homepage view</p>
+
+<h3 id="displaymultiplebeerseithercatalogueofallbeersoffilteredbeers">Display Multiple beers (either catalogue of all beers of filtered beers)</h3>
+
+<p>Display a list of products with some basic information</p>
+<p>Each element in the list is a link to a view with detailed information about the product</p>
+<p>Products are loaded 20 at a time implementing 'infinite scroll' effect</p>
+
+<h3 id="singleproductview">Single Product View</h3>
+
+<p>Clicking on a product displays detailed information about the product</p>
+<p>Product can be added to favourites or removed from favorites</p>
+
+<h3 id="randombeerpage">Random Beer page</h3>
+
+<p>Displays a single product view of a random beer</p>
+
+<h3 id="favoritespage">Favorites page</h3>
+
+<p>Displays all added favorites </p>
+<p>Users can add products to favourites from <em>single product view</em> or <em>random beer page</em> and then view/delete them via a <em>favourites</em> icon</p>
+
+<h3 id="filterbycriteria">Filter by criteria</h3>
+<ul>
+<li><p>alcohol by volume (a set of predefined ranges of value, i.e: normal (ABV &lt;= 6), strong (ABV 6.1-10), magical (ABV >= 10.1));</p></li>
+
+<li><p>colour intensity/EBC (a set of predefined ranges of value, i.e: pale (EBC &lt;= 19), amber/brown (EBC 20-49), dark (EBC >= 50))</p></li>
+
+<li><p>hoppyness/IBU (a set of predefined ranges of value, i.e: mild (IBU &lt;= 19), hoppy (IBU 20-59), super hoppy (IBU >= 60)</p></li>
+
+<li><p>beer name (displays beers matching search criteria);</p>
+</ul>
+
+<h3 id="filtercriteriacanbecombined">Filter criteria can be combined</h3>
+
+<p>i.e: selecting 'strong' and 'pale' filters returns <strong>all</strong> matches for ABV 6.1 - 10 &amp;&amp; EBC &lt;= 19</p>
+
+<h3 id="clearfilters">Clear filters</h3>
+
+<p>Users can clear filter criteria</p></li>
+</ul>
+
+<h2 id="builtwith">Built with:</h2>
+
 <ul>
 <li><a href="https://punkapi.com/documentation/v2">Punk API</a></li>
+
 <li><a href="https://jquery.com/">jQuery</a></li>
+
 <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+
 <li><a href="https://webpack.js.org/">Webpack</a></li>
+
+<li><a href="https://infinite-scroll.com">Infinite Scroll</a></li>
+
+<li><a href="https://babeljs.io/">Babel</a></li>
 </ul>
+
 <h2 id="trello">Trello:</h2>
+
 <p><a href="https://trello.com/b/L5dDFDv1/brewdog-punkbeer">Board</a></p>

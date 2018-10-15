@@ -19,7 +19,7 @@ A single page web application serving as an online catalogue that lists detailed
  - alcohol by volume (a set of predefined ranges of value, i.e: normal (ABV <= 6), strong (ABV 6.1-10), magical (ABV >= 10.1));
  - colour intensity/EBC (a set of predefined ranges of value, i.e: pale (EBC <= 19), amber/brown (EBC 20-49), dark (EBC >= 50))
  - hoppyness/IBU (a set of predefined ranges of value, i.e: mild (IBU <= 19), hoppy (IBU 20-59), super hoppy (IBU >= 60)
- - beer name.keyword (displays beers matching search criteria);
+ - beer name/keyword (displays beers matching search criteria);
 
  ### Filter criteria can be combined (optional):
   i.e: selecting 'strong' and 'pale' filters returns **all** matches for ABV 6.1 - 10 && EBC <= 19
